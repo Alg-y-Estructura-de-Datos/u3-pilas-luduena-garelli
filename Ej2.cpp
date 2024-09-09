@@ -4,45 +4,42 @@ using namespace std;
 
 void RemplazarValor(Pila<int> &p, int n1, int n2)
 {
-    Pila<int> aux;
-    int auxnum;
-    while (!p.esVacia())
+  Pila<int> aux;
+  int auxnum;
+  while (!p.esVacia())
+  {
+    auxnum = p.pop();
+    if (auxnum == n1)
     {
-        auxnum = p.pop();
-        if (auxnum == n1)
-        {
-            aux.push(n2);
-        }
-        else
-        {
-            aux.push(auxnum);
-        }
+      aux.push(n2);
     }
-    while (!aux.esVacia())
+    else
     {
-        auxnum = aux.pop();
-        p.push(auxnum);
+      aux.push(auxnum);
     }
-}
-
-void Leer(Pila<int> datos)
-{
-    while (!datos.esVacia())
-    {
-        cout << datos.pop();
-    }
+  }
+  while (!aux.esVacia())
+  {
+    auxnum = aux.pop();
+    p.push(auxnum);
+  }
 }
 
 int main()
 {
-    Pila<int> datos;
-    datos.push(9);
-    datos.push(3);
-    datos.push(5);
-    datos.push(2);
-    datos.push(3);
-    datos.push(3);
-    RemplazarValor(datos, 3, 1);
-    Leer(datos);
-    return 0;
+  Pila<int> datos;
+  datos.push(9);
+  datos.push(3);
+  datos.push(5);
+  datos.push(2);
+  datos.push(3);
+  datos.push(3);
+  RemplazarValor(datos, 3, 1);
+
+  while (!datos.esVacia())
+  {
+    cout << datos.pop();
+  }
+
+  return 0;
 }
